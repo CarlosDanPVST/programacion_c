@@ -1,5 +1,5 @@
-#include <iso646.h>
 #include <stdio.h>
+#include <math.h>
 
 int main() {
  // Comentarios de una línea
@@ -92,15 +92,16 @@ int main() {
   */
  int edad;
  printf("Indica tu edad: \n");
- scanf("%d", &edad);
+ //scanf("%d", &edad);
  printf("Naciste en %d\n", 2023 - edad);
  // [bytes], provoca buffer overflow si se sobrepasan los bytes
  char nombreInp[25];
  printf("Indica tu nombre: \n");
  // scanf lee hasta el primer espacio en blanco
  // ("formatSpecifier", &variable), & -> address of operador
- scanf("%s", &nombreInp);
+ //scanf("%s", &nombreInp);
  printf("Bienvenido al programa %s\n", nombreInp);
+
  // TODO investigar fflush(stdin);
  // Sin él fgets no espera a ser leído
  fflush(stdin);
@@ -109,8 +110,41 @@ int main() {
  // (variable sin address of, bytes, stdin)
  char nombreCompleto[25];
  printf("Indica tu nombre completo: \n");
- fgets(nombreCompleto, 25, stdin);
- printf("Bienvenido al programa %s", nombreCompleto);
+ //fgets(nombreCompleto, 25, stdin);
+ printf("Bienvenido al programa %s\n", nombreCompleto);
+
+ /*
+  * libreria <math.h>
+  * sqrt(radicando)
+  * pow(base, potencia)
+  * round(numero) <=5 sube
+  * ceil(numero)
+  * floor(numero)
+  * fabs(numero)
+  * log(numero) base e
+  * sin(angulo) en radianes
+  */
+ double raizDos = sqrt(2);
+ double potencia17 = pow(17, 2);
+ printf("Raiz y potencia: %lf %lf\n", raizDos, potencia17);
+ int redondearBajo = round(4.4);
+ int redondearAlto = round(4.5);
+ int funcionTecho = ceil(23.01);
+ int funcionPiso = floor(23.9999);
+ printf("<5 %d, >=5 %d, techo %d, piso %d \n", redondearBajo,
+  redondearAlto, funcionTecho, funcionPiso);
+ double valorAbs = fabs(-213);
+ double logaritmo = log(2.71828);
+ double seno = sin(3.14159/2);
+ printf("Algunas funciones: (valorAbs, logaritmo, seno) "
+       "(%lf, %lf, %lf)\n", valorAbs, logaritmo, seno);
+
+ const double PI = 3.14159;
+ double radius;
+ printf("Introduce el radio: ");
+ scanf("%lf", &radius);
+ printf("La circunferencia es: %lf", 2*PI*radius);
 
  return 0;
 }
+
