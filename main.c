@@ -24,7 +24,17 @@ int main() {
  /*
   * Para imprimir debemos usamos la función de stdio.h
   * printf("%specifiers", replacements);
+  * Los specifiers son
+  * %c    character
+  * %s    array of characters
+  * %d    int
+  * %ld   long _int_
+  * %f    float
+  * %lf   double
   *
+  * %.n   Precisión decimal
+  * %n    Longitud minima del campo
+  * %-    Alineación izquierda
   */
  printf("Hola, mi nombre es %s y tomo pi como %f\n", nombre, pi);
  printf("%c %c\n", numeroA, letraA);
@@ -45,7 +55,8 @@ int main() {
   */
  unsigned char notOFInt = 255;
  signed char overFlowInt = 130;
- printf("255/%d 130/%d\n", notOFInt, overFlowInt);
+ // Notemos el espacio despues del forwardslash
+ printf("255/%15d 130/%15d\n", notOFInt, overFlowInt);
  printf("Real number is: %d\n", overFlowInt+ 256);
 
  /*
