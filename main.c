@@ -60,10 +60,57 @@ int main() {
  printf("Real number is: %d\n", overFlowInt+ 256);
 
  /*
-  * Operators
+  * Operadores
+  *  Aritmeticos
+  *    +    Suma
+  *    -    Resta
+  *    *    Multiplicacion
+  *    /    Division
+  *    %    Modulo
+  *    ++   Incremento
+  *    --   Decremento
+  *    +=   Y similares existen en C
+  *  TODO Logicos
+  *
   *
   */
  //TODO Seguir a partir de Operadores aritmeticos
+ int numerador = 5, denominador = 3;
+ printf("La division se trunca con enteros: 5/3 = %d\n", numerador/denominador);
+ printf("Cast Java-like, o bien, cambiar el tipo de dato: 5/2=%f\n", (float) numerador/denominador);
+ int modulo = 3;
+ int entero = 24323;
+ printf("Operacion modulo con \% : 24323 \% 3 = %d\n", entero%modulo);
+ int variableLoop = 1;
+ printf("Inicial %d\n", variableLoop++);
+ printf("Inicial %d\n",++variableLoop);
+ printf("Inicial %d\n", variableLoop += 6);
+
+ /*
+  * Gestion de std input
+  *
+  */
+ int edad;
+ printf("Indica tu edad: \n");
+ scanf("%d", &edad);
+ printf("Naciste en %d\n", 2023 - edad);
+ // [bytes], provoca buffer overflow si se sobrepasan los bytes
+ char nombreInp[25];
+ printf("Indica tu nombre: \n");
+ // scanf lee hasta el primer espacio en blanco
+ // ("formatSpecifier", &variable), & -> address of operador
+ scanf("%s", &nombreInp);
+ printf("Bienvenido al programa %s\n", nombreInp);
+ // TODO investigar fflush(stdin);
+ // Sin él fgets no espera a ser leído
+ fflush(stdin);
+
+ // fgets lee toda la linea
+ // (variable sin address of, bytes, stdin)
+ char nombreCompleto[25];
+ printf("Indica tu nombre completo: \n");
+ fgets(nombreCompleto, 25, stdin);
+ printf("Bienvenido al programa %s", nombreCompleto);
 
  return 0;
 }
