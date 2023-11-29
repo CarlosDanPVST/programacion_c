@@ -1,21 +1,18 @@
-#include <ctype.h> // Para diversas funciones, como strings
-#include <math.h>  // Para funciones matematicas
+#include <ctype.h>   // Para diversas funciones, como strings
+#include <math.h>    // Para funciones matematicas
 #include <stdbool.h> // Para poder usar booleanos
-#include <stdio.h> // Para standar I/O
+#include <stdio.h>   // Para standar I/O
+#include <string.h>  // Para funciones string
 
 void esPar(int n) {
-  if (! n % 2) {
+  if (!n % 2) {
     printf("El numero %d es par\n", n);
   } else {
     printf("El numero %d es impar\n", n);
   }
 }
-int masSiete(int x) {
-  return x + 7;
-}
-int alCuadrado(int x) {
-  return x * x;
-}
+int masSiete(int x) { return x + 7; }
+int alCuadrado(int x) { return x * x; }
 
 // Ver el tema de funcion prototipo
 bool identidadSumaSeno(double x, double y);
@@ -213,15 +210,15 @@ int main() {
   char unit;
   float temperature;
   printf("Is the initial temperature in F or C?");
-  scanf("%c", &unit);
+  // scanf("%c", &unit);
   unit = toupper(unit);
   if (unit == 'C') {
     printf("Enter the temperature value:\n");
-    scanf("%f", &temperature);
+    // scanf("%f", &temperature);
     printf("The temperature is on %.2f Farennheit\n", temperature * 9 / 5 + 32);
   } else if (unit == 'F') {
     printf("Enter the temperature value:\n");
-    scanf("%f", &temperature);
+    // scanf("%f", &temperature);
     printf("The temperature is on %.2f Celsius\n", (temperature - 32) * 5 / 9);
   } else {
     printf("The unit may not exist.\n");
@@ -233,11 +230,11 @@ int main() {
   char operadorBinario;
   double operando1, operando2;
   printf("Introduce el operador + - * /\n");
-  scanf("%c", &operadorBinario);
+  // scanf("%c", &operadorBinario);
   printf("Introduce el primer operando: ");
-  scanf("%lf", &operando1);
+  // scanf("%lf", &operando1);
   printf("\nIntroduce el segundo operando: \n");
-  scanf("%lf", &operando2);
+  // scanf("%lf", &operando2);
   switch (operadorBinario) {
   case '+':
     printf("El resultado de la suma es %.2f\n", operando1 + operando2);
@@ -276,11 +273,57 @@ int main() {
   double alfa = 25;
   double beta = 26;
   printf("¿sin(25 + 26) = sin(25)cos(26) - cos(25)sin(26)? "
-         "-> %s\n", identidadSumaSeno( alfa, beta) ? "Verdadero" : "Falso");
+         "-> %s\n",
+         identidadSumaSeno(alfa, beta) ? "Verdadero" : "Falso");
 
-  return 0;
+  /*
+   * String functions. Requires <string.h>
+   * strlwr( myStr )               Asigna la string a su version minusculas
+   * strupr( myStr )               Asigna la string a su version mayusculas
+   * strcat( dstStr, srcStr )      Asigna a la string dst el valor de la src
+   * strncat( dstStr, srcStr, n )  Asinga los primeros n caracteres de src a dst
+   * strcpy( dstStr, srcStr )      Asigna la string src a dst
+   * strncpy( dstStr, srcStr, n )  Asigna los primeros n caracteres de src a dst
+   *
+   * strset( myStr, myChar)        Remplaza myChar en cada caracter de myStr
+   * strnset( myStr, myChar, n)    Remplaza los primos n caracteres de myStr
+   * strrev( mySrt)                Invierte myStr
+   *
+   * strlen( myStr )               Devuelve la longitud de la string
+   * strcmp( myStr, oStr )         Compara dos strings
+   * strncom( myStr, oStr, n)      Compara los primeros n caracteres de las
+   * strings strcmpi( myStr, oStr )Compara dos srtings, case insensitive
+   * strnicmp( myStr, oStr, n)     Compara los primeros n caracteres de las
+   *                                 strings
+   *
+   */
+  char lorem[] = "lorem";
+  char ipsum[] = "ipsum";
+  char copy[25];
+  // Notemos la impresión: Las funciones str son mutantes
+  // aka, sobreescriben el valor original
+  printf("strlwr: %s,\nstrupr: %s,"
+         "\nstrcat: %s,\nstrncat: %s,"
+         "\nstrcpy: %s,\nstrncpy: %s\n",
+         strlwr(lorem), strupr(ipsum), strcat(lorem, ipsum),
+         strncat(lorem, ipsum, 3), strcpy(copy, lorem),
+         strncpy(ipsum, lorem, 3));
+  // TODO ¿Por qué [ 6 ]?
+  lorem[6] = "lorem";
+  ipsum[6] = "ipsum";
+  printf("Originales: %s %s\n"
+         "strset y strnst: %s %s\n"
+         "strrvt: %s",
+         lorem, ipsum
+         , strset( lorem, '*'), strnset( lorem, '-', 2)
+         , strrev(lorem)
+         );
+
+
+
+      return 0;
 }
 
 bool identidadSumaSeno(double x, double y) {
-  return sin(x + y) == sin(x)*cos(y) + cos(x)*sin(y);
+  return sin(x + y) == sin(x) * cos(y) + cos(x) * sin(y);
 }
