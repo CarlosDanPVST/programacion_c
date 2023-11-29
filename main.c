@@ -313,15 +313,30 @@ int main() {
   ipsum[6] = "ipsum";
   printf("Originales: %s %s\n"
          "strset y strnst: %s %s\n"
-         "strrvt: %s",
-         lorem, ipsum
-         , strset( lorem, '*'), strnset( lorem, '-', 2)
-         , strrev(lorem)
-         );
+         "strrvt: %s\n",
+         lorem, ipsum, strset(lorem, '*'), strnset(lorem, '-', 2),
+         strrev(lorem));
+
+  /*
+   * For loop. Loop definido, se repite una cantidad finita en principio
+   * for( inicializarContador ; condicion ; alterarCondicion ){ ... }
+   *
+   */
+  for ( int i = 0 ; i < strlen("Cinco") ; i++) {
+    printf("%c\t", "Cinco"[i]);
+  }
+  int inf = 324;
+  int sup = 357;
+  printf("\nNumeros pares entre %d y %d\n", inf, sup);
+  for ( int current = sup ; current >= inf ; current -= 2) {
+    if ( current % 2 != 0) {
+      current -= 1;
+    }
+    printf("%d ", current);
+  }
 
 
-
-      return 0;
+  return 0;
 }
 
 bool identidadSumaSeno(double x, double y) {
