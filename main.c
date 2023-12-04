@@ -321,6 +321,13 @@ int main() {
    * For loop. Loop definido, se repite una cantidad finita en principio
    * for( inicializarContador ; condicion ; alterarCondicion ){ ... }
    *
+   * While loop. Loop indefinido, que puede repetirse de cero a infinitas veces
+   * while( condicion ) { ... }
+   *
+   * Do while loops. Loops indefinidos, que pueeden repetirse de una a infinitas
+   *   veces
+   *
+   * Continue and break keywords
    */
   for ( int i = 0 ; i < strlen("Cinco") ; i++) {
     printf("%c\t", "Cinco"[i]);
@@ -334,6 +341,56 @@ int main() {
     }
     printf("%d ", current);
   }
+
+  /*char name[25];
+  printf("\nWhat is your name?: ");
+  fgets( name, 25, stdin);
+  name[ strlen(name) - 1] = '\0';
+  while ( strlen(name) == 0) {
+    printf("Type something");
+    printf("\nWhat is your name?: ");
+    fgets( name, 25, stdin);
+    name[ strlen(name) - 1] = '\0';
+
+  }
+
+  printf("Hello %s", name);
+  */
+  /*int doNumber = 0;
+  int doSum = 0;
+  // Sum as long as the summand is positive
+  do {
+    printf("\nEnter a positive number to sum: ");
+    scanf("%d", &doNumber);
+    if ( doNumber > 0) {
+      doSum += doNumber;
+    }
+  } while ( doNumber > 0);
+  printf("%d", doSum);*/
+
+  printf("\n");
+  for ( int i = 1; i < 100; i++) {
+    if ( i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
+      //continue;
+      break;
+    }
+    printf("%d ", i);
+  }
+  printf("\n%d", 0 % 3);
+
+  /*
+   * Arrays
+   * Se declaran siguiendo el nombre de la variable con corchetes
+   *   Dentro de ellos se especifica el número de elementos
+   * Se pueden indexar con los mismos corchetes
+   */
+  int primos[] = { 2, 3, 5, 7, 11};
+  //printf("\nEl tercer elemento es: %d", primos[2]);
+  printf("\nEl cuadrado de los primeros 5 primos es...\n");
+  for (int i = 0; i < sizeof(primos)/sizeof(primos[0]) ; i++) {
+    printf("%d ",  primos[i]*primos[i]);
+  }
+  printf("\nSize of int: %d\n", sizeof(int) );
 
 
   return 0;
